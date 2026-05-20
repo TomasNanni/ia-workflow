@@ -14,17 +14,17 @@ plan: null
 report: null
 commit: null
 depends_on: []
-blocks: [STORY-002, STORY-003]
+blocks: [STORY-002, STORY-003, STORY-006, STORY-008]
 skills: [fastapi-python]
 created: 2026-05-20
 updated: 2026-05-20
 ---
 
-# STORY-001: Infrastructure, Models & Data Seeding
+# STORY-001: Infrastructure, Models & Data Seeding (SQLite)
 
 ## Description
 
-As a developer, I want to set up the dual database infrastructure, the User/Session models, and a seeding script, so that the application has a solid foundation for personalized data analysis.
+As a developer, I want to set up the dual database infrastructure, the User/Session models, and a seeding script for SQLite, so that the application has a solid foundation for personalized data analysis.
 
 ## Acceptance Criteria
 
@@ -46,7 +46,7 @@ As a developer, I want to set up the dual database infrastructure, the User/Sess
 ## Dependencies
 
 - **Blocked by**: None
-- **Blocks**: STORY-002, STORY-003, STORY-006
+- **Blocks**: STORY-002, STORY-003, STORY-006, STORY-008
 
 ## PRD Reference
 

@@ -13,18 +13,18 @@ epic_branch: epic/PRD-001-db-analysis-chatbot
 plan: null
 report: null
 commit: null
-depends_on: [STORY-001]
+depends_on: [STORY-001, STORY-006, STORY-009]
 blocks: [STORY-004]
 skills: [react-router-declarative-mode, shadcn, vercel-react-best-practices]
 created: 2026-05-20
 updated: 2026-05-20
 ---
 
-# STORY-003: Navigation & Session List UI (with Dates)
+# STORY-003: Navigation & Session List UI
 
 ## Description
 
-As a user, I want to see my previous conversations in a sidebar with their creation dates, so that I can easily identify and switch between analyses.
+As a user, I want to see my previous conversations in a sidebar, so that I can easily identify and switch between analyses.
 
 ## Acceptance Criteria
 
@@ -32,19 +32,17 @@ As a user, I want to see my previous conversations in a sidebar with their creat
 - [ ] Each session entry in the sidebar shows the `title` and its `created_at` date (formatted).
 - [ ] Sessions are ordered by date (newest first).
 - [ ] Clicking a session navigates to `/chat/:sessionId`.
-- [ ] "Obsidian Deep" theme (Black/Charcoal/Emerald) is applied app-wide via `index.css`.
 - [ ] "New Chat" button starts a fresh analysis.
 
 ## Technical Notes
 
-- Use `date-fns` or similar for formatting timestamps in the sidebar.
-- Implement CSS variables for the "Obsidian Deep" palette in `index.css`.
-- The sidebar should reflect the active route state.
-- Ensure the sidebar collapses/expands correctly as per `shadcn/ui` Sidebar component.
+- Use `date-fns` for formatting timestamps.
+- Ensure the sidebar reflects the active route state using `NavLink`.
+- Follow `shadcn` patterns for Sidebar implementation.
 
 ## Dependencies
 
-- **Blocked by**: STORY-001, STORY-006
+- **Blocked by**: STORY-001, STORY-006, STORY-009
 - **Blocks**: STORY-004
 
 ## PRD Reference

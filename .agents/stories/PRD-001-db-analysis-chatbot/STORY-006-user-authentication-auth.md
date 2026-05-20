@@ -29,17 +29,15 @@ As a user, I want to create an account and log in, so that my chat history is se
 ## Acceptance Criteria
 
 - [ ] Backend endpoints `POST /api/v1/auth/register` and `POST /api/v1/auth/login` are implemented.
-- [ ] Passwords are securely hashed before storage.
-- [ ] Login returns a JWT or session identifier for subsequent requests.
-- [ ] Frontend `Login` and `Register` pages are implemented with "Obsidian Deep" styling.
-- [ ] Protected routes ensure only authenticated users can access the chat interface.
+- [ ] Passwords are securely hashed using `passlib`.
+- [ ] Login returns a JWT token.
+- [ ] Frontend `Login` and `Register` pages are implemented.
+- [ ] Protected routes (using a `RequireAuth` wrapper) ensure session access is restricted.
 
 ## Technical Notes
 
-- Use `passlib` with `bcrypt` for hashing.
-- Implement a simple auth middleware or dependency in FastAPI to protect session routes.
-- Frontend forms should include validation and clear error messages.
-- Use `shadcn/ui` for form components (Input, Button, Card).
+- Follow the auth patterns in `fastapi-python` skill.
+- Use `shadcn` Form components for the UI.
 
 ## Dependencies
 
