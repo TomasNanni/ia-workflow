@@ -6,7 +6,7 @@
 
 ## Progress
 
-1/11 stories done — 9%
+1/13 stories done — 7%
 
 ## Stories
 
@@ -25,6 +25,8 @@ All stories commit on the epic branch `epic/PRD-001-db-analysis-chatbot`. No per
 | STORY-005 | Schema Map Visualizer | feature | ⬜ todo | medium | — | — |
 | STORY-010 | Automated Session Title Generation | enhancement | ⬜ todo | small | — | — |
 | STORY-011 | Query Validation & Timeout Security | enhancement | ⬜ todo | medium | — | — |
+| STORY-012 | Session Lifecycle Management (Deletion) | feature | ⬜ todo | small | — | — |
+| STORY-013 | Agent Accuracy Testing (Evaluation) | technical | ⬜ todo | medium | — | — |
 
 ## Status Icons
 - ⬜ todo
@@ -43,3 +45,5 @@ All stories commit on the epic branch `epic/PRD-001-db-analysis-chatbot`. No per
 - STORY-005 blocked by STORY-004, STORY-002
 - STORY-010 blocked by STORY-007
 - STORY-011 blocked by STORY-007
+- STORY-012 blocked by STORY-001, STORY-003
+- STORY-013 blocked by STORY-007
