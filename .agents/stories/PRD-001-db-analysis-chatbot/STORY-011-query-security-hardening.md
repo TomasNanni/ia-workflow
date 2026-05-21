@@ -7,17 +7,17 @@ type: enhancement
 priority: high
 complexity: medium
 phase: 5
-status: todo
+status: in-progress
 labels: [backend, security]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: null
+plan: .agents/plans/PRD-001/STORY-011-query-security-hardening.plan.md
 report: null
 commit: null
 depends_on: [STORY-007]
 blocks: []
 skills: [fastapi-python]
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-05-21
 ---
 
 # STORY-011: Query Validation & Timeout Security

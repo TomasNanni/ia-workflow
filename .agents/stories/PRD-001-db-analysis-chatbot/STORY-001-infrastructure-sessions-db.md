@@ -7,10 +7,10 @@ type: technical
 priority: high
 complexity: medium
 phase: 1
-status: todo
+status: in-progress
 labels: [backend, api, database]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: null
+plan: .agents/plans/PRD-001/STORY-001-infrastructure-sessions-db.plan.md
 report: null
 commit: null
 depends_on: []

@@ -7,10 +7,10 @@ type: feature
 priority: high
 complexity: medium
 phase: 2
-status: todo
+status: in-progress
 labels: [backend, ai, pydantic-ai]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: null
+plan: .agents/plans/PRD-001/STORY-002-ai-agent-core-discovery.plan.md
 report: null
 commit: null
 depends_on: [STORY-001, STORY-008]

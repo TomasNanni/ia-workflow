@@ -7,17 +7,17 @@ type: feature
 priority: medium
 complexity: small
 phase: 4
-status: todo
+status: in-progress
 labels: [frontend, backend, api]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: null
+plan: .agents/plans/PRD-001/STORY-012-session-deletion.plan.md
 report: null
 commit: null
 depends_on: [STORY-001, STORY-003]
 blocks: []
 skills: [fastapi-python, shadcn, react-router-declarative-mode]
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-05-21
 ---
 
 # STORY-012: Session Lifecycle Management (Deletion)

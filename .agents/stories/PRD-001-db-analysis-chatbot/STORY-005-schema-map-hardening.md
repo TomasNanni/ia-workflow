@@ -7,10 +7,10 @@ type: feature
 priority: medium
 complexity: medium
 phase: 3
-status: todo
+status: in-progress
 labels: [frontend, ui]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: null
+plan: .agents/plans/PRD-001/STORY-005-schema-map-visualizer.plan.md
 report: null
 commit: null
 depends_on: [STORY-004, STORY-002]

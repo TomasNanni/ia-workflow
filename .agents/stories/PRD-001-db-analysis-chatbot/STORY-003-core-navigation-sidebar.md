@@ -7,10 +7,10 @@ type: feature
 priority: medium
 complexity: small
 phase: 3
-status: todo
+status: in-progress
 labels: [frontend, ui, react-router]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: null
+plan: .agents/plans/PRD-001/STORY-003-core-navigation-sidebar.plan.md
 report: null
 commit: null
 depends_on: [STORY-001, STORY-006, STORY-009]

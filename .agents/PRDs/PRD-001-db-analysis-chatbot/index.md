@@ -24,8 +24,8 @@ All stories commit on the epic branch `epic/PRD-001-db-analysis-chatbot`. No per
 | STORY-004 | Chat Interface UI | feature | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-004-chat-interface-interaction.plan.md) | — |
 | STORY-005 | Schema Map Visualizer | feature | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-005-schema-map-visualizer.plan.md) | — |
 | STORY-010 | Automated Session Title Generation | enhancement | 🟡 in-progress | small | [.plan](../../plans/PRD-001/STORY-010-session-title-generation.plan.md) | — |
-| STORY-011 | Query Validation & Timeout Security | enhancement | ⬜ todo | medium | — | — |
-| STORY-012 | Session Lifecycle Management (Deletion) | feature | ⬜ todo | small | — | — |
+| STORY-011 | Query Validation & Timeout Security | enhancement | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-011-query-security-hardening.plan.md) | — |
+| STORY-012 | Session Lifecycle Management (Deletion) | feature | 🟡 in-progress | small | [.plan](../../plans/PRD-001/STORY-012-session-deletion.plan.md) | — |
 | STORY-013 | Agent Accuracy Testing (Evaluation) | technical | ⬜ todo | medium | — | — |
 
 ## Status Icons
