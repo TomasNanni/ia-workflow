@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     sessions_db_url: str = "sqlite:///./sessions.db"
     analytics_db_url: str = ""
     openrouter_api_key: str = ""
+    ai_model: str = "meta-llama/llama-3.3-70b-instruct:free"
     allowed_origins: str = "http://localhost:3000"
     log_level: str = "INFO"
 
