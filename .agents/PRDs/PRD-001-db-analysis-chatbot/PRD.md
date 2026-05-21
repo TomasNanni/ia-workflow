@@ -6,7 +6,7 @@ status: draft
 base_branch: main
 epic_branch: epic/PRD-001-db-analysis-chatbot
 created: 2026-05-17
-updated: 2026-05-17
+updated: 2026-05-21
 ---
 
 # PRD-001: AI-Powered Database Analysis Chatbot

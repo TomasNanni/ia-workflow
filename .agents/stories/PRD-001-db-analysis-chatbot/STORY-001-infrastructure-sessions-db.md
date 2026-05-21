@@ -7,17 +7,17 @@ type: technical
 priority: high
 complexity: medium
 phase: 1
-status: in-progress
+status: done
 labels: [backend, api, database]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: .agents/plans/PRD-001/STORY-001-infrastructure-sessions-db.plan.md
-report: null
-commit: null
+plan: .agents/plans/PRD-001/completed/STORY-001-infrastructure-sessions-db.plan.md
+report: .agents/reports/PRD-001/STORY-001-infrastructure-sessions-db.report.md
+commit: 0de0df4
 depends_on: []
 blocks: [STORY-002, STORY-003, STORY-006, STORY-008]
 skills: [fastapi-python]
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-05-21
 ---
 
 # STORY-001: Infrastructure, Models & Data Seeding (SQLite)
@@ -28,12 +28,12 @@ As a developer, I want to set up the dual database infrastructure, the User/Sess
 
 ## Acceptance Criteria
 
-- [ ] SQLite database `sessions.db` is configured with `users` and `sessions` tables.
-- [ ] PostgreSQL connection to Supabase is configured for read-only analytics.
-- [ ] SQLAlchemy models for `User` and `Session` (with `created_at` timestamps) are implemented.
-- [ ] A seeding script `scripts/seed_sqlite.py` is created to populate the DB with 5 users and sample chat sessions with historical dates.
-- [ ] `GET /api/v1/sessions` returns a list of sessions for the authenticated user, including their `created_at` dates.
-- [ ] `POST /api/v1/sessions` creates a new session linked to the current user.
+- [x] SQLite database `sessions.db` is configured with `users` and `sessions` tables.
+- [x] PostgreSQL connection to Supabase is configured for read-only analytics.
+- [x] SQLAlchemy models for `User` and `Session` (with `created_at` timestamps) are implemented.
+- [x] A seeding script `scripts/seed_sqlite.py` is created to populate the DB with 5 users and sample chat sessions with historical dates.
+- [x] `GET /api/v1/sessions` returns a list of sessions for the authenticated user, including their `created_at` dates.
+- [x] `POST /api/v1/sessions` creates a new session linked to the current user.
 
 ## Technical Notes
 
