@@ -7,17 +7,17 @@ type: feature
 priority: high
 complexity: medium
 phase: 2
-status: in-progress
+status: done
 labels: [backend, ai, pydantic-ai]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: .agents/plans/PRD-001/STORY-002-ai-agent-core-discovery.plan.md
-report: null
-commit: null
+plan: .agents/plans/PRD-001/completed/STORY-002-ai-agent-core-discovery.plan.md
+report: .agents/reports/PRD-001/STORY-002-ai-agent-core-discovery.report.md
+commit: bab8e3a
 depends_on: [STORY-001, STORY-008]
 blocks: [STORY-007, STORY-005]
 skills: [building-pydantic-ai-agents, fastapi-python]
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-05-21
 ---
 
 # STORY-002: AI Agent Core & Schema Discovery
