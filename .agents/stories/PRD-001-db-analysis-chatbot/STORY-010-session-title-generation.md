@@ -7,10 +7,10 @@ type: enhancement
 priority: low
 complexity: small
 phase: 3
-status: todo
+status: in-progress
 labels: [backend, ai]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: null
+plan: .agents/plans/PRD-001/STORY-010-session-title-generation.plan.md
 report: null
 commit: null
 depends_on: [STORY-007]

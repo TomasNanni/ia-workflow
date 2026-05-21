@@ -14,16 +14,16 @@ All stories commit on the epic branch `epic/PRD-001-db-analysis-chatbot`. No per
 
 | ID | Title | Type | Status | Complexity | Plan | Commit |
 |----|-------|------|--------|------------|------|--------|
-| STORY-001 | Infrastructure & SQLite Seeding | technical | ⬜ todo | medium | — | — |
+| STORY-001 | Session Persistence & Dual DB Infrastructure | technical | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-001-infrastructure-sessions-db.plan.md) | — |
 | STORY-008 | Analytics DB Seeding (PostgreSQL) | technical | ✅ done | small | — | `82031a8` |
-| STORY-006 | User Authentication (Login & Register) | feature | ⬜ todo | medium | — | — |
-| STORY-009 | "Obsidian Deep" Theming & Responsive | enhancement | ⬜ todo | medium | — | — |
-| STORY-002 | AI Agent Core & Schema Discovery | feature | ⬜ todo | medium | — | — |
-| STORY-003 | Navigation & Session List UI | feature | ⬜ todo | small | — | — |
-| STORY-007 | AI Agent Query Execution & Chat API | feature | ⬜ todo | medium | — | — |
-| STORY-004 | Chat Interface UI | feature | ⬜ todo | medium | — | — |
-| STORY-005 | Schema Map Visualizer | feature | ⬜ todo | medium | — | — |
-| STORY-010 | Automated Session Title Generation | enhancement | ⬜ todo | small | — | — |
+| STORY-006 | User Authentication (Login & Register) | feature | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-006-user-authentication-auth.plan.md) | — |
+| STORY-009 | "Obsidian Deep" Theming & Responsive | enhancement | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-009-obsidian-deep-theming.plan.md) | — |
+| STORY-002 | AI Agent Core & Schema Discovery | feature | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-002-ai-agent-core-discovery.plan.md) | — |
+| STORY-003 | Navigation & Session List UI | feature | 🟡 in-progress | small | [.plan](../../plans/PRD-001/STORY-003-core-navigation-sidebar.plan.md) | — |
+| STORY-007 | AI Agent Query Execution & Chat API | feature | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-007-ai-agent-chat-execution.plan.md) | — |
+| STORY-004 | Chat Interface UI | feature | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-004-chat-interface-interaction.plan.md) | — |
+| STORY-005 | Schema Map Visualizer | feature | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-005-schema-map-visualizer.plan.md) | — |
+| STORY-010 | Automated Session Title Generation | enhancement | 🟡 in-progress | small | [.plan](../../plans/PRD-001/STORY-010-session-title-generation.plan.md) | — |
 | STORY-011 | Query Validation & Timeout Security | enhancement | ⬜ todo | medium | — | — |
 | STORY-012 | Session Lifecycle Management (Deletion) | feature | ⬜ todo | small | — | — |
 | STORY-013 | Agent Accuracy Testing (Evaluation) | technical | ⬜ todo | medium | — | — |

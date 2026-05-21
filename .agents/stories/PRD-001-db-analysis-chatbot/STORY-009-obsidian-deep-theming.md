@@ -7,10 +7,10 @@ type: enhancement
 priority: medium
 complexity: medium
 phase: 3
-status: todo
+status: in-progress
 labels: [frontend, ui, css]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: null
+plan: .agents/plans/PRD-001/STORY-009-obsidian-deep-theming.plan.md
 report: null
 commit: null
 depends_on: []
