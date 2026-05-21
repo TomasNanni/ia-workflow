@@ -7,6 +7,9 @@ class Settings(BaseSettings):
     app_version: str = "0.1.0"
     debug: bool = False
     database_url: str = "sqlite:///./app.db"
+    sessions_db_url: str = "sqlite:///./sessions.db"
+    analytics_db_url: str = ""
+    openrouter_api_key: str = ""
     allowed_origins: str = "http://localhost:3000"
     log_level: str = "INFO"
 

@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.core.database import Base, engine
 from app.core.middleware import LoggingMiddleware
+from app.routers import session
 
 Base.metadata.create_all(bind=engine)
 
@@ -22,6 +23,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(session.router, prefix="/api/v1")
 
 
 @app.get("/health")
