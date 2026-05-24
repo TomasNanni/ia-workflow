@@ -6,7 +6,7 @@
 
 ## Progress
 
-3/13 stories done — 23%
+5/13 stories done — 38%
 
 ## Stories
 
@@ -16,10 +16,10 @@ All stories commit on the epic branch `epic/PRD-001-db-analysis-chatbot`. No per
 |----|-------|------|--------|------------|------|--------|
 | STORY-001 | Session Persistence & Dual DB Infrastructure | technical | ✅ done | medium | [completed](../../plans/PRD-001/completed/STORY-001-infrastructure-sessions-db.plan.md) | `0de0df4` |
 | STORY-008 | Analytics Database Seeding (PostgreSQL) | technical | ✅ done | small | — | `82031a8` |
+| STORY-002 | AI Agent Core & Schema Discovery | feature | ✅ done | medium | [completed](../../plans/PRD-001/completed/STORY-002-ai-agent-core-discovery.plan.md) | `bab8e3a` |
 | STORY-003 | Navigation & Session List UI | feature | ✅ done | small | [completed](../../plans/PRD-001/completed/STORY-003-core-navigation-sidebar.plan.md) | `5136c2f` |
-| STORY-006 | User Authentication (Login & Register) | feature | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-006-user-authentication-auth.plan.md) | — |
+| STORY-006 | User Authentication (Login & Register) | feature | ✅ done | medium | [completed](../../plans/PRD-001/completed/STORY-006-user-authentication-auth.plan.md) | `b2d7ee9` |
 | STORY-009 | "Obsidian Deep" Theming & Responsive Layout | enhancement | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-009-obsidian-deep-theming.plan.md) | — |
-| STORY-002 | AI Agent Core & Schema Discovery | feature | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-002-ai-agent-core-discovery.plan.md) | — |
 | STORY-007 | AI Agent Query Execution & Chat API | feature | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-007-ai-agent-chat-execution.plan.md) | — |
 | STORY-004 | Chat Interface UI | feature | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-004-chat-interface-interaction.plan.md) | — |
 | STORY-005 | Schema Map Visualizer | feature | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-005-schema-map-visualizer.plan.md) | — |

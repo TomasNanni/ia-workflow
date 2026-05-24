@@ -3,7 +3,7 @@ story: STORY-006
 prd: PRD-001
 plan: .agents/plans/PRD-001/completed/STORY-006-user-authentication-auth.plan.md
 epic_branch: epic/PRD-001-db-analysis-chatbot
-commit: {short SHA}
+commit: b2d7ee9
 status: COMPLETE
 completed: 2026-05-24
 ---

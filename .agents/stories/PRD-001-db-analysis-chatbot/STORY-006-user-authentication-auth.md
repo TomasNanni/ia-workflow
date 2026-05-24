@@ -7,12 +7,12 @@ type: feature
 priority: high
 complexity: medium
 phase: 2
-status: in-progress
+status: done
 labels: [frontend, backend, auth]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: .agents/plans/PRD-001/STORY-006-user-authentication-auth.plan.md
-report: null
-commit: null
+plan: .agents/plans/PRD-001/completed/STORY-006-user-authentication-auth.plan.md
+report: .agents/reports/PRD-001/STORY-006-user-authentication-auth.report.md
+commit: b2d7ee9
 depends_on: [STORY-001]
 blocks: [STORY-003]
 skills: [fastapi-python, shadcn, vercel-react-best-practices]
