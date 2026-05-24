@@ -3,7 +3,7 @@ story: STORY-003
 prd: PRD-001
 plan: .agents/plans/PRD-001/completed/STORY-003-core-navigation-sidebar.plan.md
 epic_branch: epic/PRD-001-db-analysis-chatbot
-commit: TBA
+commit: 5136c2f
 status: COMPLETE
 completed: 2026-05-24
 ---
@@ -12,7 +12,7 @@ completed: 2026-05-24
 
 **Plan**: `.agents/plans/PRD-001/STORY-003-core-navigation-sidebar.plan.md`
 **Epic Branch**: `epic/PRD-001-db-analysis-chatbot`
-**Commit**: `TBA`
+**Commit**: `5136c2f`
 
 ## Summary
 

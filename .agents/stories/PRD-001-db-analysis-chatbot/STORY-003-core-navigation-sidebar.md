@@ -7,17 +7,17 @@ type: feature
 priority: medium
 complexity: small
 phase: 3
-status: in-progress
+status: done
 labels: [frontend, ui, react-router]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: .agents/plans/PRD-001/STORY-003-core-navigation-sidebar.plan.md
-report: null
-commit: null
+plan: .agents/plans/PRD-001/completed/STORY-003-core-navigation-sidebar.plan.md
+report: .agents/reports/PRD-001/STORY-003-core-navigation-sidebar.report.md
+commit: 5136c2f
 depends_on: [STORY-001, STORY-006, STORY-009]
 blocks: [STORY-004]
 skills: [react-router-declarative-mode, shadcn, vercel-react-best-practices]
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-05-24
 ---
 
 # STORY-003: Navigation & Session List UI
