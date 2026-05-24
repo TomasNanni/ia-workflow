@@ -6,6 +6,9 @@ import NotFound from "@/pages/NotFound"
 import Dashboard from "@/pages/dashboard/Dashboard"
 import DashboardHome from "@/pages/dashboard/DashboardHome"
 import Settings from "@/pages/dashboard/Settings"
+import Login from "@/pages/auth/Login"
+import Register from "@/pages/auth/Register"
+import RequireAuth from "@/components/auth/RequireAuth"
 
 const ChatPagePlaceholder = () => {
   const { sessionId } = useParams()
@@ -21,16 +24,22 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<RootLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="chat/:sessionId" element={<ChatPagePlaceholder />} />
-          <Route path="about" element={<About />} />
-          <Route path="dashboard" element={<Dashboard />}>
-            <Route index element={<DashboardHome />} />
-            <Route path="settings" element={<Settings />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+
+        <Route element={<RequireAuth />}>
+          <Route element={<RootLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="chat/:sessionId" element={<ChatPagePlaceholder />} />
+            <Route path="about" element={<About />} />
+            <Route path="dashboard" element={<Dashboard />}>
+              <Route index element={<DashboardHome />} />
+              <Route path="settings" element={<Settings />} />
+            </Route>
           </Route>
-          <Route path="*" element={<NotFound />} />
         </Route>
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )

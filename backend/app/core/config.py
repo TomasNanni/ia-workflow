@@ -13,6 +13,11 @@ class Settings(BaseSettings):
     ai_model: str = "meta-llama/llama-3.3-70b-instruct:free"
     allowed_origins: str = "http://localhost:3000"
     log_level: str = "INFO"
+    
+    # Auth
+    secret_key: str = "dev_secret_key_change_me_in_production"
+    algorithm: str = "HS256"
+    access_token_expire_minutes: int = 60 * 24  # 24 hours for MVP convenience
 
     @field_validator("allowed_origins", mode="before")
     @classmethod

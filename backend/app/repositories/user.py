@@ -3,10 +3,10 @@ from sqlalchemy.orm import Session
 from app.models.user import User
 from app.schemas.user import UserCreate
 
-def create(db: Session, user_in: UserCreate) -> User:
+def create(db: Session, user_in: dict) -> User:
     db_user = User(
-        email=user_in.email,
-        hashed_password=user_in.password  # Should be hashed by service
+        email=user_in["email"],
+        hashed_password=user_in["password"]
     )
     db.add(db_user)
     db.commit()
