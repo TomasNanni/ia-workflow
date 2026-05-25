@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { NavLink, useNavigate } from "react-router"
 import { format } from "date-fns"
+import { es } from "date-fns/locale"
 import { Plus, MessageSquare, LogOut, User } from "lucide-react"
 import {
   Sidebar,
@@ -43,38 +44,40 @@ export function AppSidebar() {
   }
 
   return (
-    <Sidebar variant="floating" collapsible="icon">
+    <Sidebar variant="floating" collapsible="icon" className="border-r border-border/50">
       <SidebarHeader className="p-4">
         <Button 
           onClick={handleNewChat}
-          className="w-full justify-start gap-2 bg-emerald-600 hover:bg-emerald-700 text-white"
+          className="w-full justify-start gap-2 bg-primary hover:bg-primary/90 text-primary-foreground emerald-glow transition-all"
         >
           <Plus className="h-4 w-4" />
-          <span>Nuevo Chat</span>
+          <span className="group-data-[collapsible=icon]:hidden">Nuevo Chat</span>
         </Button>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Conversaciones Recientes</SidebarGroupLabel>
-          <SidebarMenu>
+          <SidebarGroupLabel className="text-muted-foreground/50 px-4 mb-2">Conversaciones Recientes</SidebarGroupLabel>
+          <SidebarMenu className="px-2">
             {sessions.map((session) => (
               <SidebarMenuItem key={session.id}>
-                <SidebarMenuButton asChild>
+                <SidebarMenuButton asChild tooltip={session.title}>
                   <NavLink
                     to={`/chat/${session.id}`}
                     className={({ isActive }) =>
                       cn(
-                        "flex flex-col items-start gap-1 py-3 h-auto",
-                        isActive && "bg-sidebar-accent text-sidebar-accent-foreground"
+                        "flex flex-col items-start gap-0.5 py-3 h-auto transition-colors rounded-md px-3",
+                        isActive 
+                          ? "bg-primary/10 text-primary border border-primary/20" 
+                          : "hover:bg-muted/50 text-foreground/70 hover:text-foreground"
                       )
                     }
                   >
                     <div className="flex items-center gap-2 w-full">
-                      <MessageSquare className="h-4 w-4 shrink-0" />
+                      <MessageSquare className={cn("h-4 w-4 shrink-0", "text-primary/70")} />
                       <span className="truncate font-medium">{session.title || "Sesión sin título"}</span>
                     </div>
-                    <span className="text-[10px] text-muted-foreground ml-6">
-                      {format(new Date(session.created_at), "d MMM, yyyy")}
+                    <span className="text-[10px] text-muted-foreground/60 ml-6 group-data-[collapsible=icon]:hidden">
+                      {format(new Date(session.created_at), "d 'de' MMMM", { locale: es })}
                     </span>
                   </NavLink>
                 </SidebarMenuButton>
@@ -83,16 +86,16 @@ export function AppSidebar() {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="p-4 border-t border-sidebar-border">
+      <SidebarFooter className="p-4 border-t border-border/50">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton className="gap-2">
+            <SidebarMenuButton className="gap-2 hover:bg-muted/50 transition-colors">
               <User className="h-4 w-4" />
               <span>Perfil</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton className="gap-2 text-red-500 hover:text-red-600 hover:bg-red-50/10">
+            <SidebarMenuButton className="gap-2 text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors">
               <LogOut className="h-4 w-4" />
               <span>Cerrar Sesión</span>
             </SidebarMenuButton>
