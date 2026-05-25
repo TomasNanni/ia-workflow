@@ -64,7 +64,7 @@ def delete(db: Session, id: int):
 # SOURCE: backend/AGENTS.md
 # 403 for ownership violations
 if session.user_id != current_user.id:
-    raise HTTPException(status_code=403, detail="Forbidden")
+    raise HTTPException(status_code=403, detail="Prohibido")
 ```
 
 ---

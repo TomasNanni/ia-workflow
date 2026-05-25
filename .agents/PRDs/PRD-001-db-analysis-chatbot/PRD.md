@@ -16,13 +16,13 @@ The AI-Powered Database Analysis Chatbot is a specialized tool that allows non-t
 
 The primary value proposition is to remove the SQL barrier for data analysis, providing immediate insights through a conversational experience. The application maintains session history using a local SQLite database, ensuring users can return to their previous analyses.
 
-**MVP Goal**: A functional, minimal chat interface where users can ask questions about a fixed PostgreSQL schema and receive accurate, data-backed responses.
+**MVP Goal**: A functional, minimal chat interface where users can ask questions about a fixed PostgreSQL schema and receive accurate, data-backed responses. All UI text and agent interactions will be in Spanish.
 
 ## 2. Mission
 To make data analysis accessible to everyone, regardless of their coding skills.
 - **Accessibility**: Design for non-coders first.
-- **Safety**: Strict read-only access to prevent data modification.
-- **Persistence**: Reliable conversation tracking for long-term utility.
+- **Spanish First**: The application is intended for Spanish-speaking users. All interface elements, error messages, and agent responses must be in Spanish.
+- **Safety**: Strict read-only access to prevent data modification.- **Persistence**: Reliable conversation tracking for long-term utility.
 
 ## 3. Target Users
 - **Non-Technical Managers**: Need quick stats without bothering the dev team.

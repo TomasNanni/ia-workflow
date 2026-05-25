@@ -8,7 +8,7 @@ def create_user(db: Session, user_in: UserCreate):
     if user_repo.get_by_email(db, user_in.email):
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
-            detail="User with this email already exists"
+            detail="Ya existe un usuario con este correo electrónico"
         )
     
     # Hash the password
@@ -27,6 +27,6 @@ def get_user(db: Session, user_id: int):
     if not user:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="User not found"
+            detail="Usuario no encontrado"
         )
     return user

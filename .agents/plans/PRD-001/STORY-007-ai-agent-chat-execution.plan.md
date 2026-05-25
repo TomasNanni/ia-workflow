@@ -109,8 +109,10 @@ def execute_read_query(ctx: RunContext[Deps], query: str) -> str:
 
 - **File**: `backend/app/services/agent.py`
 - **Action**: CREATE
-- **Implement**: Define Pydantic AI `Agent`. Implement `execute_read_query` tool using a separate engine for `ANALYTICS_DB_URL`. Enforce `SELECT` only.
-- **Validate**: Script to run agent with a simple prompt like "List all customers".
+- **Implement**: Define Pydantic AI `Agent`. 
+    - **System Prompt**: Must be in Spanish, instructing the agent to respond in Spanish.
+    - **Tools**: Implement `execute_read_query` tool using a separate engine for `ANALYTICS_DB_URL`. Enforce `SELECT` only.
+- **Validate**: Script to run agent with a simple prompt like "Listar todos los clientes".
 
 ### Task 5: Chat Logic Service
 

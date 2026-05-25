@@ -56,6 +56,7 @@ Frontend and backend are fully decoupled. Run each independently. CORS is config
 ## Code Patterns
 
 ### Cross-project conventions
+- **Spanish First**: The application must be exclusively in Spanish. All UI text, error messages, and AI agent responses must be in Spanish.
 - Frontend uses `@/` path alias for all imports
 - Backend uses `snake_case` everywhere, `PascalCase` for classes
 - Both projects log at module level with structured loggers

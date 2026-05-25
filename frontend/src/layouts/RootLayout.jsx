@@ -11,7 +11,7 @@ export default function RootLayout() {
           <header className="h-16 flex items-center px-4 border-b border-zinc-800">
             <SidebarTrigger />
             <div className="ml-4 font-semibold text-emerald-500">
-              DB Analytics AI
+              Analítica IA de BD
             </div>
           </header>
           <div className="flex-1 overflow-auto">

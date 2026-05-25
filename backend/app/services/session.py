@@ -11,7 +11,7 @@ def get_session(db: Session, session_id: int):
     if not session:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Session not found"
+            detail="Sesión no encontrada"
         )
     return session
 

@@ -22,7 +22,7 @@ def login(user_in: UserCreate, db: Session = Depends(get_db)):
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect email or password",
+            detail="Correo electrónico o contraseña incorrectos",
             headers={"WWW-Authenticate": "Bearer"},
         )
     

@@ -20,7 +20,7 @@ export default function Register() {
     setSuccess("")
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match")
+      setError("Las contraseñas no coinciden")
       return
     }
 
@@ -35,10 +35,10 @@ export default function Register() {
 
       if (!response.ok) {
         const data = await response.json()
-        throw new Error(data.detail || "Registration failed")
+        throw new Error(data.detail || "Error al registrarse")
       }
 
-      setSuccess("Account created successfully! Redirecting to login...")
+      setSuccess("¡Cuenta creada con éxito! Redirigiendo al inicio de sesión...")
       setTimeout(() => {
         navigate("/login")
       }, 2000)
@@ -53,26 +53,26 @@ export default function Register() {
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-primary">Register</CardTitle>
-          <CardDescription>Create a new account to start analyzing databases.</CardDescription>
+          <CardTitle className="text-2xl font-bold text-primary">Registrarse</CardTitle>
+          <CardDescription>Cree una cuenta nueva para comenzar a analizar bases de datos.</CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
             {error && <p className="text-sm text-destructive">{error}</p>}
             {success && <p className="text-sm text-emerald-600">{success}</p>}
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">Correo electrónico</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="name@example.com"
+                placeholder="nombre@ejemplo.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Contraseña</Label>
               <Input
                 id="password"
                 type="password"
@@ -82,7 +82,7 @@ export default function Register() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Label htmlFor="confirmPassword">Confirmar contraseña</Label>
               <Input
                 id="confirmPassword"
                 type="password"
@@ -94,12 +94,12 @@ export default function Register() {
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Creating account..." : "Register"}
+              {loading ? "Creando cuenta..." : "Registrarse"}
             </Button>
             <p className="text-sm text-muted-foreground text-center">
-              Already have an account?{" "}
+              ¿Ya tiene una cuenta?{" "}
               <Link to="/login" className="text-primary hover:underline">
-                Login
+                Iniciar Sesión
               </Link>
             </p>
           </CardFooter>

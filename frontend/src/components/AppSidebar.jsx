@@ -50,12 +50,12 @@ export function AppSidebar() {
           className="w-full justify-start gap-2 bg-emerald-600 hover:bg-emerald-700 text-white"
         >
           <Plus className="h-4 w-4" />
-          <span>New Chat</span>
+          <span>Nuevo Chat</span>
         </Button>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Recent Conversations</SidebarGroupLabel>
+          <SidebarGroupLabel>Conversaciones Recientes</SidebarGroupLabel>
           <SidebarMenu>
             {sessions.map((session) => (
               <SidebarMenuItem key={session.id}>
@@ -71,10 +71,10 @@ export function AppSidebar() {
                   >
                     <div className="flex items-center gap-2 w-full">
                       <MessageSquare className="h-4 w-4 shrink-0" />
-                      <span className="truncate font-medium">{session.title || "Untitled Session"}</span>
+                      <span className="truncate font-medium">{session.title || "Sesión sin título"}</span>
                     </div>
                     <span className="text-[10px] text-muted-foreground ml-6">
-                      {format(new Date(session.created_at), "MMM d, yyyy")}
+                      {format(new Date(session.created_at), "d MMM, yyyy")}
                     </span>
                   </NavLink>
                 </SidebarMenuButton>
@@ -88,13 +88,13 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton className="gap-2">
               <User className="h-4 w-4" />
-              <span>Profile</span>
+              <span>Perfil</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton className="gap-2 text-red-500 hover:text-red-600 hover:bg-red-50/10">
               <LogOut className="h-4 w-4" />
-              <span>Logout</span>
+              <span>Cerrar Sesión</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

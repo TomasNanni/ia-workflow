@@ -52,7 +52,7 @@ So that I can easily find them in the history.
 ### AI Prompting
 ```python
 // Pattern for title generation
-prompt = f"Generate a 3-5 word title for this question: {message}"
+prompt = f"Genera un título de 3 a 5 palabras para esta pregunta: {message}"
 ```
 
 ---
@@ -72,14 +72,14 @@ prompt = f"Generate a 3-5 word title for this question: {message}"
 
 - **File**: `backend/app/services/agent.py`
 - **Action**: UPDATE
-- **Implement**: Create `async def generate_session_title(message: str) -> str`. Use a lightweight prompt.
-- **Validate**: Test with various inputs: "How many sales in May?" -> "May Sales Analysis".
+- **Implement**: Create `async def generate_session_title(message: str) -> str`. Use a lightweight prompt in Spanish.
+- **Validate**: Test with various inputs: "¿Cuántas ventas hubo en mayo?" -> "Análisis de Ventas Mayo".
 
 ### Task 2: Integration in Chat Flow
 
 - **File**: `backend/app/services/chat.py`
 - **Action**: UPDATE
-- **Implement**: In the chat processing logic, check if `session.title == "New Chat"`. If so, generate a title and update the session.
+- **Implement**: In the chat processing logic, check if `session.title == "Nuevo Chat"`. If so, generate a title and update the session.
 - **Validate**: Start a new chat, send a message, check if the title in the DB updates.
 
 ---
@@ -87,12 +87,12 @@ prompt = f"Generate a 3-5 word title for this question: {message}"
 ## End-to-End Tests
 
 - [ ] Create new chat.
-- [ ] Send message: "What are our top products?".
-- [ ] Check sidebar or DB -> Title should be something like "Top Products Analysis".
+- [ ] Send message: "¿Cuáles son nuestros mejores productos?".
+- [ ] Check sidebar or DB -> Title should be something like "Análisis de Mejores Productos".
 - [ ] Send another message in the same chat -> Title should NOT change.
 
 ## Acceptance Criteria
 
-- [ ] After the first user message in a session, the AI agent generates a short (3-5 words) title.
+- [ ] After the first user message in a session, the AI agent generates a short (3-5 words) title in Spanish.
 - [ ] The session record in SQLite is updated with this generated title.
 - [ ] The sidebar reflects the new title immediately.
