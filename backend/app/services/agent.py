@@ -1,6 +1,6 @@
 import os
 from pydantic_ai import Agent, RunContext
-from sqlalchemy import Engine, inspect
+from sqlalchemy import Engine, inspect, text
 from app.core.config import settings
 
 # Ensure OpenRouter API key is available in the environment for pydantic-ai
@@ -11,44 +11,80 @@ elif "OPENROUTER_API_KEY" not in os.environ:
     os.environ["OPENROUTER_API_KEY"] = "placeholder"
 
 # Initialize the agent
-# The "openrouter:" prefix is handled by pydantic-ai's model inference
 agent = Agent(
     f"openrouter:{settings.ai_model}",
     deps_type=Engine,
     system_prompt=(
-        "You are a database expert assistant. "
-        "You have read-only access to a PostgreSQL analytics database. "
-        "Your task is to answer user questions by querying the database. "
-        "You must follow these steps:\n"
-        "1. Use 'list_tables' to see what tables are available.\n"
-        "2. Use 'describe_table' to understand the schema of relevant tables.\n"
-        "3. Generate and execute SQL queries (only SELECT statements) to get the data.\n"
-        "4. Provide a clear, natural language answer based on the query results.\n\n"
-        "Always be cautious and verify the schema before assuming column names."
+        "Eres un experto en análisis de datos y SQL. "
+        "Tienes acceso de solo lectura a una base de datos PostgreSQL de analítica. "
+        "Tu objetivo es responder las preguntas del usuario mediante consultas SQL precisas. "
+        "Debes seguir estos pasos:\n"
+        "1. Usa 'list_tables' para ver las tablas disponibles si no las conoces.\n"
+        "2. Usa 'describe_table' para entender el esquema de las tablas relevantes.\n"
+        "3. Genera y ejecuta consultas SQL (solo sentencias SELECT) para obtener los datos.\n"
+        "4. Proporciona una respuesta clara y en lenguaje natural en español basada en los resultados.\n\n"
+        "Reglas importantes:\n"
+        "- Responde siempre en español.\n"
+        "- Si no puedes encontrar la información, admítelo.\n"
+        "- No inventes datos que no estén en la base de datos.\n"
+        "- Siempre verifica los nombres de las columnas antes de realizar consultas complejas.\n"
+        "- Solo puedes ejecutar sentencias SELECT."
     )
 )
 
 @agent.tool
 def list_tables(ctx: RunContext[Engine]) -> list[str]:
-    """List all available tables in the analytics database."""
+    """Listar todas las tablas disponibles en la base de datos de analítica."""
     inspector = inspect(ctx.deps)
     return inspector.get_table_names()
 
 @agent.tool
 def describe_table(ctx: RunContext[Engine], table_name: str) -> str:
     """
-    Get detailed schema information for a specific table.
-    Returns column names and their types.
+    Obtener información detallada del esquema de una tabla específica.
+    Devuelve los nombres de las columnas y sus tipos.
     """
     inspector = inspect(ctx.deps)
     try:
         columns = inspector.get_columns(table_name)
         if not columns:
-            return f"Table '{table_name}' not found or has no columns."
+            return f"La tabla '{table_name}' no fue encontrada o no tiene columnas."
         
-        lines = [f"Table: {table_name}"]
+        lines = [f"Tabla: {table_name}"]
         for col in columns:
             lines.append(f"  - {col['name']} ({col['type']})")
         return "\n".join(lines)
     except Exception as e:
-        return f"Error describing table '{table_name}': {str(e)}"
+        return f"Error al describir la tabla '{table_name}': {str(e)}"
+
+@agent.tool
+def execute_read_query(ctx: RunContext[Engine], query: str) -> str:
+    """
+    Ejecutar una consulta SQL de solo lectura (SELECT).
+    Devuelve los resultados formateados como una cadena.
+    """
+    # Validación básica de seguridad: solo SELECT
+    clean_query = query.strip().upper()
+    if not clean_query.startswith("SELECT"):
+        return "Error: Solo se permiten consultas SELECT de solo lectura."
+
+    try:
+        with ctx.deps.connect() as conn:
+            result = conn.execute(text(query))
+            rows = result.fetchall()
+            if not rows:
+                return "La consulta no devolvió resultados."
+            
+            # Formatear resultados (cabeceras + filas)
+            headers = result.keys()
+            header_str = " | ".join(headers)
+            separator = "-" * len(header_str)
+            
+            row_lines = []
+            for row in rows:
+                row_lines.append(" | ".join(str(val) for val in row))
+                
+            return f"{header_str}\n{separator}\n" + "\n".join(row_lines)
+    except Exception as e:
+        return f"Error al ejecutar la consulta: {str(e)}"
+

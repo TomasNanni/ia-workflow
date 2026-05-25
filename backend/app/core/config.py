@@ -8,16 +8,23 @@ class Settings(BaseSettings):
     debug: bool = False
     database_url: str = "sqlite:///./app.db"
     sessions_db_url: str = "sqlite:///./sessions.db"
-    analytics_db_url: str = ""
+    analytics_db_url: str = "postgresql://user:pass@host:5432/db"
     openrouter_api_key: str = ""
-    ai_model: str = "meta-llama/llama-3.3-70b-instruct:free"
-    allowed_origins: str = "http://localhost:3000"
+    ai_model: str = "deepseek/deepseek-chat:free"
+    allowed_origins: str = "http://localhost:5173"
     log_level: str = "INFO"
     
     # Auth
     secret_key: str = "dev_secret_key_change_me_in_production"
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 60 * 24  # 24 hours for MVP convenience
+
+    @field_validator("analytics_db_url")
+    @classmethod
+    def validate_analytics_url(cls, v: str) -> str:
+        if v and not v.startswith("postgresql"):
+            raise ValueError("ANALYTICS_DB_URL must be a PostgreSQL connection string")
+        return v
 
     @field_validator("allowed_origins", mode="before")
     @classmethod
