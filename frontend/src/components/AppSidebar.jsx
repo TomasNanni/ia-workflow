@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import { NavLink, useNavigate } from "react-router"
+import { NavLink, useNavigate, useParams } from "react-router"
 import { format } from "date-fns"
 import { es } from "date-fns/locale"
-import { Plus, MessageSquare, LogOut, User } from "lucide-react"
+import { Plus, MessageSquare, LogOut, User, Trash2 } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -14,12 +14,24 @@ import {
   SidebarFooter,
   SidebarHeader,
 } from "@/components/ui/sidebar"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 export function AppSidebar() {
   const [sessions, setSessions] = useState([])
   const navigate = useNavigate()
+  const { sessionId: activeSessionId } = useParams()
 
   useEffect(() => {
     async function fetchSessions() {
@@ -43,6 +55,25 @@ export function AppSidebar() {
     navigate("/")
   }
 
+  const handleDeleteSession = async (sessionId) => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/v1/sessions/${sessionId}`, {
+        method: "DELETE",
+      })
+
+      if (response.ok) {
+        setSessions((prev) => prev.filter((s) => s.id !== sessionId))
+        if (activeSessionId === String(sessionId)) {
+          navigate("/")
+        }
+      } else {
+        console.error("Failed to delete session")
+      }
+    } catch (error) {
+      console.error("Error deleting session:", error)
+    }
+  }
+
   return (
     <Sidebar variant="floating" collapsible="icon" className="border-r border-border/50">
       <SidebarHeader className="p-4">
@@ -59,13 +90,13 @@ export function AppSidebar() {
           <SidebarGroupLabel className="text-muted-foreground/50 px-4 mb-2">Conversaciones Recientes</SidebarGroupLabel>
           <SidebarMenu className="px-2">
             {sessions.map((session) => (
-              <SidebarMenuItem key={session.id}>
+              <SidebarMenuItem key={session.id} className="group/item relative">
                 <SidebarMenuButton asChild tooltip={session.title}>
                   <NavLink
                     to={`/chat/${session.id}`}
                     className={({ isActive }) =>
                       cn(
-                        "flex flex-col items-start gap-0.5 py-3 h-auto transition-colors rounded-md px-3",
+                        "flex flex-col items-start gap-0.5 py-3 h-auto transition-colors rounded-md px-3 pr-10",
                         isActive 
                           ? "bg-primary/10 text-primary border border-primary/20" 
                           : "hover:bg-muted/50 text-foreground/70 hover:text-foreground"
@@ -81,6 +112,37 @@ export function AppSidebar() {
                     </span>
                   </NavLink>
                 </SidebarMenuButton>
+                
+                <div className="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover/item:opacity-100 transition-opacity group-data-[collapsible=icon]:hidden">
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-7 w-7 text-muted-foreground hover:text-red-400 hover:bg-red-500/10"
+                      >
+                        <Trash2 className="h-3.5 w-3.5" />
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          Esta acción no se puede deshacer. Se eliminará permanentemente la sesión de chat y todo su historial.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                        <AlertDialogAction
+                          onClick={() => handleDeleteSession(session.id)}
+                          className="bg-red-600 hover:bg-red-700 text-white"
+                        >
+                          Eliminar
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </div>
               </SidebarMenuItem>
             ))}
           </SidebarMenu>

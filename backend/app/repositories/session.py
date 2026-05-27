@@ -35,3 +35,11 @@ def update_title(db: Session, db_session: ChatSession, title: str) -> ChatSessio
     db.refresh(db_session)
     return db_session
 
+def delete(db: Session, id: int) -> bool:
+    db_session = get_by_id(db, id)
+    if not db_session:
+        return False
+    db.delete(db_session)
+    db.commit()
+    return True
+

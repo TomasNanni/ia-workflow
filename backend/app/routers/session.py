@@ -80,3 +80,15 @@ async def chat(
     
     return result
 
+@router.delete("/{session_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_session(
+    session_id: int, 
+    current_user: User = Depends(get_current_user), 
+    db: Session = Depends(get_db)
+):
+    """
+    Eliminar una sesión específica por ID.
+    """
+    session_service.delete_session(db, session_id, current_user.id)
+    return None
+
