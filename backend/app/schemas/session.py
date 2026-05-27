@@ -5,7 +5,7 @@ class SessionBase(BaseModel):
     title: str
 
 class SessionCreate(SessionBase):
-    user_id: int
+    user_id: int | None = None
 
 class SessionRead(SessionBase):
     id: int
