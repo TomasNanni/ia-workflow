@@ -3,7 +3,7 @@ story: STORY-005
 prd: PRD-001
 plan: .agents/plans/PRD-001/STORY-005-schema-map-visualizer.plan.md
 epic_branch: epic/PRD-001-db-analysis-chatbot
-commit: DRAFT
+commit: bbef45d
 status: COMPLETE
 completed: 2026-05-27
 ---
@@ -12,7 +12,7 @@ completed: 2026-05-27
 
 **Plan**: `.agents/plans/PRD-001/STORY-005-schema-map-visualizer.plan.md`
 **Epic Branch**: `epic/PRD-001-db-analysis-chatbot`
-**Commit**: `DRAFT`
+**Commit**: `bbef45d`
 
 ## Summary
 

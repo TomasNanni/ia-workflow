@@ -7,17 +7,17 @@ type: feature
 priority: medium
 complexity: medium
 phase: 3
-status: in-progress
+status: done
 labels: [frontend, ui]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: .agents/plans/PRD-001/STORY-005-schema-map-visualizer.plan.md
-report: null
-commit: null
+plan: .agents/plans/PRD-001/completed/STORY-005-schema-map-visualizer.plan.md
+report: .agents/reports/PRD-001/STORY-005-schema-map-visualizer.report.md
+commit: bbef45d
 depends_on: [STORY-004, STORY-002]
 blocks: []
 skills: [shadcn]
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-05-27
 ---
 
 # STORY-005: Schema Map Visualizer
@@ -28,10 +28,10 @@ As a user, I want to see the database schema on the side of the chat, so that I 
 
 ## Acceptance Criteria
 
-- [ ] `SchemaMap` component is implemented as a 50/50 split on the right side of the chat.
-- [ ] Schema map displays tables and columns fetched from the analytics database.
-- [ ] Users can toggle column details for each table.
-- [ ] Layout is responsive, collapsing the schema map on small screens.
+- [x] `SchemaMap` component is implemented as a 50/50 split on the right side of the chat.
+- [x] Schema map displays tables and columns fetched from the analytics database.
+- [x] Users can toggle column details for each table.
+- [x] Layout is responsive, collapsing the schema map on small screens.
 
 ## Technical Notes
 
