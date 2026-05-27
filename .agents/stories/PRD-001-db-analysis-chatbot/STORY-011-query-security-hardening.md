@@ -7,17 +7,17 @@ type: enhancement
 priority: high
 complexity: medium
 phase: 5
-status: in-progress
+status: done
 labels: [backend, security]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: .agents/plans/PRD-001/STORY-011-query-security-hardening.plan.md
-report: null
-commit: null
+plan: .agents/plans/PRD-001/completed/STORY-011-query-security-hardening.plan.md
+report: .agents/reports/PRD-001/STORY-011-query-security-hardening.report.md
+commit: bc0b11e
 depends_on: [STORY-007]
 blocks: []
 skills: [fastapi-python]
 created: 2026-05-20
-updated: 2026-05-21
+updated: 2026-05-27
 ---
 
 # STORY-011: Query Validation & Timeout Security
@@ -28,10 +28,10 @@ As an administrator, I want to ensure that all AI-generated queries are safe and
 
 ## Acceptance Criteria
 
-- [ ] Backend validates that every query starts with `SELECT`.
-- [ ] A strict 10-second timeout is enforced on all analytics queries.
-- [ ] Any non-SELECT query attempt is logged and blocked with a clear error message to the user.
-- [ ] Application-level check prevents common SQL injection patterns in generated SQL.
+- [x] Backend validates that every query starts with `SELECT`.
+- [x] A strict 10-second timeout is enforced on all analytics queries.
+- [x] Any non-SELECT query attempt is logged and blocked with a clear error message to the user.
+- [x] Application-level check prevents common SQL injection patterns in generated SQL.
 
 ## Technical Notes
 

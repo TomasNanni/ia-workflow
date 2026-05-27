@@ -1,6 +1,8 @@
 import os
+import re
 from pydantic_ai import Agent, RunContext
 from sqlalchemy import Engine, inspect, text
+from sqlalchemy.exc import OperationalError, DBAPIError
 from app.core.config import settings
 
 # Ensure OpenRouter API key is available in the environment for pydantic-ai
@@ -63,14 +65,34 @@ def execute_read_query(ctx: RunContext[Engine], query: str) -> str:
     Ejecutar una consulta SQL de solo lectura (SELECT).
     Devuelve los resultados formateados como una cadena.
     """
-    # Validación básica de seguridad: solo SELECT
-    clean_query = query.strip().upper()
-    if not clean_query.startswith("SELECT"):
-        return "Error: Solo se permiten consultas SELECT de solo lectura."
+    # 1. Validación estricta y limpieza (Task 1 & 3)
+    clean_query = query.strip()
+    
+    # Bloquear múltiples sentencias (Task 3)
+    # Buscamos puntos y coma que no estén al final de la consulta (permitimos uno al final opcional)
+    if ";" in clean_query:
+        if clean_query.rstrip().count(";") > 1 or (not clean_query.rstrip().endswith(";") and ";" in clean_query):
+            return "Error de seguridad: No se permiten múltiples sentencias SQL (uso de ';')."
+
+    upper_query = clean_query.upper()
+    
+    # Debe empezar con SELECT (Task 1)
+    if not upper_query.startswith("SELECT"):
+        return "Error de seguridad: Solo se permiten consultas SELECT de solo lectura."
+
+    # Bloquear palabras clave peligrosas (Task 3)
+    # Usamos regex para asegurar que son palabras completas y no partes de otras
+    forbidden_keywords = ["INSERT", "UPDATE", "DELETE", "DROP", "TRUNCATE", "ALTER", "CREATE", "GRANT", "REVOKE"]
+    for kw in forbidden_keywords:
+        if re.search(rf"\b{kw}\b", upper_query):
+             return f"Error de seguridad: Se detectó una palabra clave no permitida: {kw}"
 
     try:
+        # Task 2: Execution Timeout (10 segundos)
         with ctx.deps.connect() as conn:
-            result = conn.execute(text(query))
+            # Aplicamos el timeout a nivel de ejecución de la sentencia
+            # execution_options(timeout=10) es soportado por muchos motores a través de SQLAlchemy
+            result = conn.execute(text(query).execution_options(timeout=10))
             rows = result.fetchall()
             if not rows:
                 return "La consulta no devolvió resultados."
@@ -85,8 +107,16 @@ def execute_read_query(ctx: RunContext[Engine], query: str) -> str:
                 row_lines.append(" | ".join(str(val) for val in row))
                 
             return f"{header_str}\n{separator}\n" + "\n".join(row_lines)
+    except OperationalError as e:
+        # Errores operacionales como timeouts suelen caer aquí
+        error_msg = str(e).lower()
+        if "timeout" in error_msg or "expired" in error_msg:
+            return "Error: La consulta tomó demasiado tiempo (límite de 10 segundos). Por favor, intenta una consulta más simple."
+        return f"Error operacional al ejecutar la consulta: {str(e)}"
+    except DBAPIError as e:
+        return f"Error de base de datos al ejecutar la consulta: {str(e)}"
     except Exception as e:
-        return f"Error al ejecutar la consulta: {str(e)}"
+        return f"Error inesperado al ejecutar la consulta: {str(e)}"
 
 async def generate_session_title(message: str) -> str:
     """
