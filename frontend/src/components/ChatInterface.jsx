@@ -27,7 +27,7 @@ export default function ChatInterface({ sessionId, initialMessages = [] }) {
     setIsLoading(true)
 
     try {
-      const token = localStorage.getItem("token")
+      const token = localStorage.getItem("access_token")
       const response = await fetch(`http://localhost:8000/api/v1/sessions/${sessionId}/chat`, {
         method: "POST",
         headers: { 

@@ -36,7 +36,12 @@ export function AppSidebar() {
   useEffect(() => {
     async function fetchSessions() {
       try {
-        const response = await fetch("http://localhost:8000/api/v1/sessions")
+        const token = localStorage.getItem("access_token")
+        const response = await fetch("http://localhost:8000/api/v1/sessions", {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
         if (response.ok) {
           const data = await response.json()
           // Sort by created_at descending (newest first)
@@ -51,14 +56,35 @@ export function AppSidebar() {
     fetchSessions()
   }, [])
 
-  const handleNewChat = () => {
-    navigate("/")
+  const handleNewChat = async () => {
+    try {
+      const token = localStorage.getItem("access_token")
+      const response = await fetch("http://localhost:8000/api/v1/sessions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({ title: "Nueva Sesión" })
+      })
+      if (response.ok) {
+        const newSession = await response.json()
+        setSessions(prev => [newSession, ...prev])
+        navigate(`/chat/${newSession.id}`)
+      }
+    } catch (error) {
+      console.error("Failed to create new session:", error)
+    }
   }
 
   const handleDeleteSession = async (sessionId) => {
     try {
+      const token = localStorage.getItem("access_token")
       const response = await fetch(`http://localhost:8000/api/v1/sessions/${sessionId}`, {
         method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
       })
 
       if (response.ok) {

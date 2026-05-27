@@ -17,7 +17,7 @@ export default function SchemaMap({ className }) {
     async function fetchSchema() {
       try {
         setLoading(true)
-        const token = localStorage.getItem("token")
+        const token = localStorage.getItem("access_token")
         const response = await fetch("http://localhost:8000/api/v1/analytics/schema", {
           headers: {
             "Authorization": `Bearer ${token}`

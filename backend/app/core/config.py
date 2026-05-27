@@ -22,8 +22,8 @@ class Settings(BaseSettings):
     @field_validator("analytics_db_url")
     @classmethod
     def validate_analytics_url(cls, v: str) -> str:
-        if v and not v.startswith("postgresql"):
-            raise ValueError("ANALYTICS_DB_URL must be a PostgreSQL connection string")
+        if v and not v.startswith("postgresql") and not v.startswith("sqlite"):
+            raise ValueError("ANALYTICS_DB_URL must be a PostgreSQL or SQLite connection string")
         return v
 
     @field_validator("allowed_origins", mode="before")

@@ -83,19 +83,37 @@
     @apply border-border outline-ring/50;
     }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased text-base md:text-lg;
     }
   html {
     @apply scroll-smooth;
+    font-size: 16px;
     }
+  @media (min-width: 768px) {
+    html {
+      font-size: 18px;
+    }
+  }
 }
 
 @layer utilities {
     .emerald-glow {
-        box-shadow: 0 0 15px 2px var(--color-emerald-glow);
+        box-shadow: 0 0 20px 2px var(--color-emerald-glow);
+    }
+    
+    .emerald-glow-subtle {
+        box-shadow: 0 0 15px 1px oklch(0.606 0.168 162.14 / 0.15);
+    }
+    
+    .emerald-glow-strong {
+        box-shadow: 0 0 30px 5px var(--color-emerald-glow);
     }
     
     .bg-obsidian-gradient {
-        background: linear-gradient(to bottom, var(--background), var(--card));
+        background: linear-gradient(to bottom, oklch(0.129 0 0), oklch(0.2 0 0));
+    }
+
+    .bg-obsidian-card {
+        background: linear-gradient(145deg, oklch(0.269 0 0), oklch(0.129 0 0));
     }
 }
