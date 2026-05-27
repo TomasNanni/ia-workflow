@@ -6,7 +6,7 @@
 
 ## Progress
 
-11/13 stories done — 85%
+12/13 stories done — 92%
 
 ## Stories
 
