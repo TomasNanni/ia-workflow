@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from app.core.config import settings
 from app.repositories import session as session_repo
-from app.services.agent import agent
+from app.services.agent import agent, generate_session_title
 from pydantic_ai.messages import ModelMessage, ModelResponse, ModelRequest, UserPromptPart, TextPart
 import json
 
@@ -37,6 +37,15 @@ async def process_chat_message(db: Session, session_id: int, user_message: str):
     new_messages.append({"role": "assistant", "content": result.data})
     
     session_repo.update_messages(db, db_session, new_messages)
+    
+    # 6. Generate title if it's the first message or title is default
+    if db_session.title == "Nuevo Chat" or not db_session.title:
+        try:
+            new_title = await generate_session_title(user_message)
+            session_repo.update_title(db, db_session, new_title)
+        except Exception:
+            # Silently fail for title generation to not break the chat
+            pass
     
     return {
         "answer": result.data,

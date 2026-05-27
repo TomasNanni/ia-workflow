@@ -7,17 +7,17 @@ type: enhancement
 priority: low
 complexity: small
 phase: 3
-status: in-progress
+status: done
 labels: [backend, ai]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: .agents/plans/PRD-001/STORY-010-session-title-generation.plan.md
-report: null
-commit: null
+plan: .agents/plans/PRD-001/completed/STORY-010-session-title-generation.plan.md
+report: .agents/reports/PRD-001/STORY-010-session-title-generation.report.md
+commit: 4e9a3b2
 depends_on: [STORY-007]
 blocks: []
 skills: [building-pydantic-ai-agents]
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-05-27
 ---
 
 # STORY-010: Automated Session Title Generation

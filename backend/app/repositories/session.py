@@ -28,3 +28,10 @@ def update_messages(db: Session, db_session: ChatSession, messages: list[dict]) 
     db.refresh(db_session)
     return db_session
 
+def update_title(db: Session, db_session: ChatSession, title: str) -> ChatSession:
+    db_session.title = title
+    db.add(db_session)
+    db.commit()
+    db.refresh(db_session)
+    return db_session
+

@@ -88,3 +88,21 @@ def execute_read_query(ctx: RunContext[Engine], query: str) -> str:
     except Exception as e:
         return f"Error al ejecutar la consulta: {str(e)}"
 
+async def generate_session_title(message: str) -> str:
+    """
+    Genera un título corto (3-5 palabras) para una sesión de chat basado en el primer mensaje.
+    """
+    prompt = (
+        f"Genera un título muy corto (máximo 5 palabras) en español que resuma esta pregunta: '{message}'. "
+        "Devuelve solo el título, sin comillas ni puntos finales."
+    )
+    try:
+        # Usamos el mismo modelo pero sin herramientas para una respuesta rápida
+        title_agent = Agent(f"openrouter:{settings.ai_model}")
+        result = await title_agent.run(prompt)
+        return result.data.strip()
+    except Exception:
+        # Fallback si falla la IA
+        words = message.split()
+        return " ".join(words[:4]) + "..." if len(words) > 4 else message
+
