@@ -12,7 +12,7 @@ labels: [backend, ai]
 epic_branch: epic/PRD-001-db-analysis-chatbot
 plan: .agents/plans/PRD-001/completed/STORY-010-session-title-generation.plan.md
 report: .agents/reports/PRD-001/STORY-010-session-title-generation.report.md
-commit: 4e9a3b2
+commit: a255e16
 depends_on: [STORY-007]
 blocks: []
 skills: [building-pydantic-ai-agents]
