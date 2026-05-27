@@ -6,7 +6,7 @@
 
 ## Progress
 
-7/13 stories done — 53%
+8/13 stories done — 61%
 
 ## Stories
 
@@ -21,7 +21,7 @@ All stories commit on the epic branch `epic/PRD-001-db-analysis-chatbot`. No per
 | STORY-006 | User Authentication (Login & Register) | feature | ✅ done | medium | [completed](../../plans/PRD-001/completed/STORY-006-user-authentication-auth.plan.md) | `b2d7ee9` |
 | STORY-009 | "Obsidian Deep" Theming & Responsive Layout | enhancement | ✅ done | medium | [completed](../../plans/PRD-001/completed/STORY-009-obsidian-deep-theming.plan.md) | `19f7e21` |
 | STORY-007 | AI Agent Query Execution & Chat API | feature | ✅ done | medium | [completed](../../plans/PRD-001/completed/STORY-007-ai-agent-chat-execution.plan.md) | `0c93cca` |
-| STORY-004 | Chat Interface UI | feature | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-004-chat-interface-interaction.plan.md) | — |
+| STORY-004 | Chat Interface UI | feature | ✅ done | medium | [completed](../../plans/PRD-001/completed/STORY-004-chat-interface-interaction.plan.md) | `7b6c8dc` |
 
 | STORY-005 | Schema Map Visualizer | feature | 🟡 in-progress | medium | [.plan](../../plans/PRD-001/STORY-005-schema-map-visualizer.plan.md) | — |
 | STORY-010 | Automated Session Title Generation | enhancement | 🟡 in-progress | small | [.plan](../../plans/PRD-001/STORY-010-session-title-generation.plan.md) | — |
