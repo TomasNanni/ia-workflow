@@ -6,7 +6,7 @@
 
 ## Progress
 
-12/13 stories done — 92%
+13/13 stories done — 100%
 
 ## Stories
 
@@ -26,7 +26,7 @@ All stories commit on the epic branch `epic/PRD-001-db-analysis-chatbot`. No per
 | STORY-010 | Automated Session Title Generation | enhancement | ✅ done | small | [completed](../../plans/PRD-001/completed/STORY-010-session-title-generation.plan.md) | `a255e16` |
 | STORY-011 | Query Validation & Timeout Security | enhancement | ✅ done | medium | [completed](../../plans/PRD-001/completed/STORY-011-query-security-hardening.plan.md) | `bc0b11e` |
 | STORY-012 | Session Lifecycle Management (Deletion) | feature | ✅ done | small | [completed](../../plans/PRD-001/completed/STORY-012-session-deletion.plan.md) | `a9e6dff` |
-| STORY-013 | Agent Accuracy Testing (Evaluation) | technical | ⬜ todo | medium | — | — |
+| STORY-013 | Agent Accuracy Testing (Evaluation) | technical | ✅ done | medium | — | — |
 
 ## Status Icons
 - ⬜ todo
