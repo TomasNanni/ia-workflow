@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.core.database import Base, engine
 from app.core.middleware import LoggingMiddleware
-from app.routers import session, auth
+from app.routers import session, auth, analytics
 
 Base.metadata.create_all(bind=engine)
 
@@ -25,6 +25,7 @@ app.add_middleware(
 )
 
 app.include_router(session.router, prefix="/api/v1")
+app.include_router(analytics.router, prefix="/api/v1")
 app.include_router(auth.router, prefix="/api/v1/auth", tags=["auth"])
 
 

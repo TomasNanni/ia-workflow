@@ -27,9 +27,13 @@ export default function ChatInterface({ sessionId, initialMessages = [] }) {
     setIsLoading(true)
 
     try {
+      const token = localStorage.getItem("token")
       const response = await fetch(`http://localhost:8000/api/v1/sessions/${sessionId}/chat`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
         body: JSON.stringify({ message: input }),
       })
 

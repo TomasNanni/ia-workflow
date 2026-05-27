@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import ChatInterface from "@/components/ChatInterface"
 import PageHeader from "@/components/PageHeader"
+import SchemaMap from "@/components/SchemaMap"
 
 export default function ChatPage() {
   const { sessionId } = useParams()
@@ -13,7 +14,12 @@ export default function ChatPage() {
     async function fetchSession() {
       try {
         setLoading(true)
-        const response = await fetch(`http://localhost:8000/api/v1/sessions/${sessionId}`)
+        const token = localStorage.getItem("token")
+        const response = await fetch(`http://localhost:8000/api/v1/sessions/${sessionId}`, {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
         if (response.ok) {
           const data = await response.json()
           setSession(data)
@@ -51,13 +57,22 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full overflow-hidden">
       <PageHeader title={session.title || "Chat de Analítica"} />
-      <div className="flex-1 overflow-hidden">
-        <ChatInterface 
-          sessionId={sessionId} 
-          initialMessages={session.messages || []} 
-        />
+      
+      <div className="flex flex-1 overflow-hidden divide-x divide-border/40">
+        {/* Chat Section */}
+        <div className="flex-1 flex flex-col min-w-0">
+          <ChatInterface 
+            sessionId={sessionId} 
+            initialMessages={session.messages || []} 
+          />
+        </div>
+        
+        {/* Schema Section - Hidden on small screens */}
+        <div className="hidden lg:block w-80 xl:w-96 shrink-0 overflow-hidden">
+          <SchemaMap />
+        </div>
       </div>
     </div>
   )
