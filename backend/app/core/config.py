@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     sessions_db_url: str = "sqlite:///./sessions.db"
     analytics_db_url: str = "postgresql://user:pass@host:5432/db"
     openrouter_api_key: str = ""
-    ai_model: str = "deepseek/deepseek-chat:free"
+    ai_model: str = "poolside/laguna-m.1:free"
     allowed_origins: str = "http://localhost:5173"
     log_level: str = "INFO"
     

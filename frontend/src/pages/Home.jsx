@@ -49,8 +49,8 @@ export default function Home() {
         >
           <Plus className="h-6 w-6 group-hover:rotate-90 transition-transform duration-300" />
           <div className="text-left">
-            <div className="font-bold">Nueva Sesión</div>
-            <div className="text-xs opacity-80">Comienza un nuevo análisis</div>
+            <div className="font-extrabold text-lg tracking-tight">Nueva Sesión</div>
+            <div className="text-xs font-medium opacity-70">Comienza un nuevo análisis</div>
           </div>
         </Button>
 

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router"
+import { useParams, useNavigate } from "react-router"
 import ChatInterface from "@/components/ChatInterface"
 import PageHeader from "@/components/PageHeader"
 import SchemaMap from "@/components/SchemaMap"
 
 export default function ChatPage() {
   const { sessionId } = useParams()
+  const navigate = useNavigate()
   const [session, setSession] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -58,7 +59,9 @@ export default function ChatPage() {
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      <PageHeader title={session.title || "Chat de Analítica"} />
+      <PageHeader 
+        title={session.title || "Chat de Analítica"} 
+      />
       
       <div className="flex flex-1 overflow-hidden divide-x divide-border/40">
         {/* Chat Section */}

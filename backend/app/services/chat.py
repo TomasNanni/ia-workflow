@@ -23,23 +23,28 @@ async def process_chat_message(db: Session, session_id: int, user_message: str):
     # So we don't need to pass history to the agent.
     
     # 3. Run agent
-    result = await agent.run(user_message, deps=analytics_engine)
+    try:
+        result = await agent.run(user_message, deps=analytics_engine)
+    except Exception as e:
+        print(f"Error running agent: {e}")
+        return {
+            "response": "Lo siento, tuve un problema al conectarme con el servicio de IA. Por favor, verifica tu API key o intenta más tarde.",
+            "session_id": session_id,
+            "error": str(e)
+        }
     
     # 4. Extract data
-    # result.data is the natural language response
-    # We might want to find if any SQL was executed. 
-    # pydantic-ai doesn't easily expose the tool calls in the final result.data unless we use a custom result type.
-    # However, for this task, we can just return the result.data.
+    # ... (rest of extraction logic)
     
     # 5. Update session messages
     new_messages = db_session.messages.copy()
     new_messages.append({"role": "user", "content": user_message})
-    new_messages.append({"role": "assistant", "content": result.data})
+    new_messages.append({"role": "assistant", "content": result.Data})
     
     session_repo.update_messages(db, db_session, new_messages)
     
     # 6. Generate title if it's the first message or title is default
-    if db_session.title == "Nuevo Chat" or not db_session.title:
+    if db_session.title in ["Nuevo Chat", "Nueva Sesión"] or not db_session.title:
         try:
             new_title = await generate_session_title(user_message)
             session_repo.update_title(db, db_session, new_title)
@@ -48,7 +53,7 @@ async def process_chat_message(db: Session, session_id: int, user_message: str):
             pass
     
     return {
-        "answer": result.data,
+        "response": result.Data,
         "session_id": session_id,
         "messages": new_messages
     }

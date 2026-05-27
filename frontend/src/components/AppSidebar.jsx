@@ -105,10 +105,10 @@ export function AppSidebar() {
       <SidebarHeader className="p-4">
         <Button 
           onClick={handleNewChat}
-          className="w-full justify-start gap-2 bg-primary hover:bg-primary/90 text-primary-foreground emerald-glow transition-all"
+          className="w-full justify-start gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-bold tracking-tight emerald-glow transition-all rounded-xl py-6"
         >
-          <Plus className="h-4 w-4" />
-          <span className="group-data-[collapsible=icon]:hidden">Nuevo Chat</span>
+          <Plus className="h-5 w-5" />
+          <span className="group-data-[collapsible=icon]:hidden text-base">Nueva Sesión</span>
         </Button>
       </SidebarHeader>
       <SidebarContent>
@@ -129,13 +129,22 @@ export function AppSidebar() {
                       )
                     }
                   >
-                    <div className="flex items-center gap-2 w-full">
-                      <MessageSquare className={cn("h-4 w-4 shrink-0", "text-primary/70")} />
-                      <span className="truncate font-medium">{session.title || "Sesión sin título"}</span>
-                    </div>
-                    <span className="text-[10px] text-muted-foreground/60 ml-6 group-data-[collapsible=icon]:hidden">
-                      {format(new Date(session.created_at), "d 'de' MMMM", { locale: es })}
-                    </span>
+                    {({ isActive }) => (
+                      <>
+                        <div className="flex items-center gap-2 w-full">
+                          <MessageSquare className={cn("h-4 w-4 shrink-0", isActive ? "text-primary" : "text-primary/70")} />
+                          <span className={cn(
+                            "truncate", 
+                            session.title === "Nueva Sesión" ? "font-bold text-foreground/90" : "font-medium"
+                          )}>
+                            {session.title || "Sesión sin título"}
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-muted-foreground/60 ml-6 group-data-[collapsible=icon]:hidden">
+                          {format(new Date(session.created_at), "d 'de' MMMM", { locale: es })}
+                        </span>
+                      </>
+                    )}
                   </NavLink>
                 </SidebarMenuButton>
                 

@@ -1,20 +1,20 @@
 import os
 import re
 from pydantic_ai import Agent, RunContext
+from pydantic_ai.models.openai import OpenAIModel
 from sqlalchemy import Engine, inspect, text
 from sqlalchemy.exc import OperationalError, DBAPIError
 from app.core.config import settings
 
-# Ensure OpenRouter API key is available in the environment for pydantic-ai
-if settings.openrouter_api_key:
-    os.environ["OPENROUTER_API_KEY"] = settings.openrouter_api_key
-elif "OPENROUTER_API_KEY" not in os.environ:
-    # Use a placeholder if not set, to allow the agent to initialize during CI/tests
-    os.environ["OPENROUTER_API_KEY"] = "placeholder"
+# Set environment variables for OpenRouter (OpenAI-compatible)
+os.environ["OPENAI_API_KEY"] = settings.openrouter_api_key
+os.environ["OPENAI_BASE_URL"] = "https://openrouter.ai/api/v1"
+
+model = OpenAIModel(settings.ai_model)
 
 # Initialize the agent
 agent = Agent(
-    f"openrouter:{settings.ai_model}",
+    model,
     deps_type=Engine,
     system_prompt=(
         "Eres un experto en análisis de datos y SQL. "
@@ -127,8 +127,8 @@ async def generate_session_title(message: str) -> str:
         "Devuelve solo el título, sin comillas ni puntos finales."
     )
     try:
-        # Usamos el mismo modelo pero sin herramientas para una respuesta rápida
-        title_agent = Agent(f"openrouter:{settings.ai_model}")
+        # Usamos el mismo modelo robusto
+        title_agent = Agent(model)
         result = await title_agent.run(prompt)
         return result.data.strip()
     except Exception:
