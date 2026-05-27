@@ -7,12 +7,12 @@ type: feature
 priority: medium
 complexity: small
 phase: 4
-status: in-progress
+status: done
 labels: [frontend, backend, api]
 epic_branch: epic/PRD-001-db-analysis-chatbot
-plan: .agents/plans/PRD-001/STORY-012-session-deletion.plan.md
-report: null
-commit: null
+plan: .agents/plans/PRD-001/completed/STORY-012-session-deletion.plan.md
+report: .agents/reports/PRD-001/STORY-012-session-deletion.report.md
+commit: a9e6dff
 depends_on: [STORY-001, STORY-003]
 blocks: []
 skills: [fastapi-python, shadcn, react-router-declarative-mode]
