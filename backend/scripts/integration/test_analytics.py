@@ -2,8 +2,8 @@ import os
 import sys
 from sqlalchemy import text
 
-# Add the current directory to sys.path
-sys.path.append(os.getcwd())
+# Add the backend directory to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 
 from app.core.database import analytics_engine
 

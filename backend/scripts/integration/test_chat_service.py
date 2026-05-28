@@ -1,6 +1,12 @@
 import asyncio
+import os
+import sys
 from unittest.mock import MagicMock, AsyncMock
 from sqlalchemy import create_engine
+
+# Add the backend directory to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
+
 from sqlalchemy.orm import sessionmaker
 from app.core.database import Base
 from app.models.session import Session as ChatSession

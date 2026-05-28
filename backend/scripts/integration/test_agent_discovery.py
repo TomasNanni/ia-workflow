@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import Any
 
 # Add backend to sys.path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
 from app.services.agent import agent, list_tables, describe_table
 from app.core.database import analytics_engine

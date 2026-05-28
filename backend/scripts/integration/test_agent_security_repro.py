@@ -1,7 +1,7 @@
 import sys
 import os
 # Añadir el directorio raíz al path para poder importar app
-sys.path.append(os.getcwd())
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 
 from sqlalchemy import create_engine
 from pydantic_ai import RunContext

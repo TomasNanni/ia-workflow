@@ -1,5 +1,11 @@
 import asyncio
+import os
+import sys
 from sqlalchemy import create_engine
+
+# Add the backend directory to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
+
 from app.services.agent import agent, list_tables, describe_table, execute_read_query
 from app.core.config import settings
 from pydantic_ai import RunContext
