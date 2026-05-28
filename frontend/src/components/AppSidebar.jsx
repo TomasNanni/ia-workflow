@@ -100,6 +100,11 @@ export function AppSidebar() {
     }
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem("access_token")
+    navigate("/login")
+  }
+
   return (
     <Sidebar variant="floating" collapsible="icon" className="border-r border-border/50">
       <SidebarHeader className="p-4">
@@ -192,7 +197,10 @@ export function AppSidebar() {
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton className="gap-2 text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors">
+            <SidebarMenuButton 
+              onClick={handleLogout}
+              className="gap-2 text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors"
+            >
               <LogOut className="h-4 w-4" />
               <span>Cerrar Sesión</span>
             </SidebarMenuButton>
